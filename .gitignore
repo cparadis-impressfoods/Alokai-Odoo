@@ -17,6 +17,10 @@ node_modules
 dist
 .DS_Store
 
+odoo-modules
+rest-framework
+.devcontainer
+.config
 
 # Runtime data
 pids
