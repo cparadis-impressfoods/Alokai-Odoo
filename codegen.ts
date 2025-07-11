@@ -14,7 +14,7 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true,
   generates: {
     './graphql/gql/': {
-      documents: ['graphql/**/*.tsx'],
+      documents: ['server/**/*.ts', 'graphql/**/*.ts'],
       preset: 'client',
       config: {
         preResolveTypes: true,

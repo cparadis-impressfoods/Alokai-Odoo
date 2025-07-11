@@ -49,12 +49,12 @@ export default defineNuxtConfig({
       'GetAddressesQuery',
     ],
     public: {
-      odooBaseImageUrl: '',
-      odooBaseUrl: '',
-      currencySymbol: '',
-      currencySeparator: '',
-      currencyDecimal: '',
-      currencyPrecision: '',
+      odooBaseImageUrl: process.env.NUXT_PUBLIC_ODOO_BASE_IMAGE_URL || '',
+      odooBaseUrl: process.env.NUXT_PUBLIC_ODOO_BASE_URL || '',
+      currencySymbol: process.env.NUXT_PUBLIC_CURRENCY_SYMBOL || '',
+      currencySeparator: process.env.NUXT_PUBLIC_CURRENCY_SEPARATOR || '',
+      currencyDecimal: process.env.NUXT_PUBLIC_CURRENCY_DECIMAL || '',
+      currencyPrecision: process.env.NUXT_PUBLIC_CURRENCY_PRECISION || '',
     },
   },
 
