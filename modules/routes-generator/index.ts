@@ -110,14 +110,22 @@ export default defineNuxtModule({
       }
     }
 
-    const [categorySlugs, productSlugs, websitePagesUrls] = await Promise.all([
+    // const [categorySlugs, productSlugs, websitePagesUrls] = await Promise.all([
+    //   fetchCategorySlugs(),
+    //   fetchProductSlugs(),
+    //   fetchWebpageSlugs(),
+    // ])  
+    const [categorySlugs, productSlugs] = await Promise.all([
       fetchCategorySlugs(),
       fetchProductSlugs(),
-      fetchWebpageSlugs(),
     ])
 
+    // console.info(
+    //   `[routes-generator] ✅ ${categorySlugs.length} categories and ${productSlugs.length} products and ${websitePagesUrls.length} website pages loaded`,
+    // )
+
     console.info(
-      `[routes-generator] ✅ ${categorySlugs.length} categories and ${productSlugs.length} products and ${websitePagesUrls.length} website pages loaded`,
+      `[routes-generator] ✅ ${categorySlugs.length} categories and ${productSlugs.length} products loaded`,
     )
 
     categorySlugs.forEach((slug) => {
@@ -128,10 +136,10 @@ export default defineNuxtModule({
       extendRouteRules(slug, { swr: swrValue })
     })
 
-    websitePagesUrls.forEach((url) => {
-      const path = url.startsWith('/') ? url : `/${url}`
-      extendRouteRules(path, { swr: swrValue })
-    })
+    // websitePagesUrls.forEach((url) => {
+    //   const path = url.startsWith('/') ? url : `/${url}`
+    //   extendRouteRules(path, { swr: swrValue })
+    // })
 
     nuxt.hook('pages:extend', (pages: NuxtPage[]) => {
       categorySlugs.forEach((slug) => {
@@ -150,12 +158,12 @@ export default defineNuxtModule({
         })
       })
 
-      websitePagesUrls.forEach((url) => {
-        pages.push({
-          name: url.replace(/^\//, '').replace(/\//g, '-'),
-          path: url,
-        })
-      })
+      // websitePagesUrls.forEach((url) => {
+      //   pages.push({
+      //     name: url.replace(/^\//, '').replace(/\//g, '-'),
+      //     path: url,
+      //   })
+      // })
     })
   },
 })
